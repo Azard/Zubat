@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB547F4E1C92E84F00DA138C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F4D1C92E84F00DA138C /* AppDelegate.swift */; };
+		AB547F501C92E84F00DA138C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F4F1C92E84F00DA138C /* ViewController.swift */; };
+		AB547F531C92E84F00DA138C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB547F511C92E84F00DA138C /* Main.storyboard */; };
+		AB547F551C92E84F00DA138C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB547F541C92E84F00DA138C /* Assets.xcassets */; };
+		AB547F581C92E84F00DA138C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB547F561C92E84F00DA138C /* LaunchScreen.storyboard */; };
+		AB547F631C92E84F00DA138C /* TakeVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F621C92E84F00DA138C /* TakeVideoTests.swift */; };
+		AB547F6E1C92E84F00DA138C /* TakeVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F6D1C92E84F00DA138C /* TakeVideoUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB547F5F1C92E84F00DA138C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB547F421C92E84F00DA138C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB547F491C92E84F00DA138C;
+			remoteInfo = TakeVideo;
+		};
+		AB547F6A1C92E84F00DA138C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB547F421C92E84F00DA138C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB547F491C92E84F00DA138C;
+			remoteInfo = TakeVideo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AB547F4A1C92E84F00DA138C /* TakeVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB547F4D1C92E84F00DA138C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB547F4F1C92E84F00DA138C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB547F521C92E84F00DA138C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AB547F541C92E84F00DA138C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB547F571C92E84F00DA138C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AB547F591C92E84F00DA138C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB547F5E1C92E84F00DA138C /* TakeVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB547F621C92E84F00DA138C /* TakeVideoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeVideoTests.swift; sourceTree = "<group>"; };
+		AB547F641C92E84F00DA138C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB547F691C92E84F00DA138C /* TakeVideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeVideoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB547F6D1C92E84F00DA138C /* TakeVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeVideoUITests.swift; sourceTree = "<group>"; };
+		AB547F6F1C92E84F00DA138C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB547F471C92E84F00DA138C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB547F5B1C92E84F00DA138C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB547F661C92E84F00DA138C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB547F411C92E84F00DA138C = {
+			isa = PBXGroup;
+			children = (
+				AB547F4C1C92E84F00DA138C /* TakeVideo */,
+				AB547F611C92E84F00DA138C /* TakeVideoTests */,
+				AB547F6C1C92E84F00DA138C /* TakeVideoUITests */,
+				AB547F4B1C92E84F00DA138C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB547F4B1C92E84F00DA138C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB547F4A1C92E84F00DA138C /* TakeVideo.app */,
+				AB547F5E1C92E84F00DA138C /* TakeVideoTests.xctest */,
+				AB547F691C92E84F00DA138C /* TakeVideoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB547F4C1C92E84F00DA138C /* TakeVideo */ = {
+			isa = PBXGroup;
+			children = (
+				AB547F4D1C92E84F00DA138C /* AppDelegate.swift */,
+				AB547F4F1C92E84F00DA138C /* ViewController.swift */,
+				AB547F511C92E84F00DA138C /* Main.storyboard */,
+				AB547F541C92E84F00DA138C /* Assets.xcassets */,
+				AB547F561C92E84F00DA138C /* LaunchScreen.storyboard */,
+				AB547F591C92E84F00DA138C /* Info.plist */,
+			);
+			path = TakeVideo;
+			sourceTree = "<group>";
+		};
+		AB547F611C92E84F00DA138C /* TakeVideoTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB547F621C92E84F00DA138C /* TakeVideoTests.swift */,
+				AB547F641C92E84F00DA138C /* Info.plist */,
+			);
+			path = TakeVideoTests;
+			sourceTree = "<group>";
+		};
+		AB547F6C1C92E84F00DA138C /* TakeVideoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AB547F6D1C92E84F00DA138C /* TakeVideoUITests.swift */,
+				AB547F6F1C92E84F00DA138C /* Info.plist */,
+			);
+			path = TakeVideoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB547F491C92E84F00DA138C /* TakeVideo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB547F721C92E84F00DA138C /* Build configuration list for PBXNativeTarget "TakeVideo" */;
+			buildPhases = (
+				AB547F461C92E84F00DA138C /* Sources */,
+				AB547F471C92E84F00DA138C /* Frameworks */,
+				AB547F481C92E84F00DA138C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TakeVideo;
+			productName = TakeVideo;
+			productReference = AB547F4A1C92E84F00DA138C /* TakeVideo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB547F5D1C92E84F00DA138C /* TakeVideoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB547F751C92E84F00DA138C /* Build configuration list for PBXNativeTarget "TakeVideoTests" */;
+			buildPhases = (
+				AB547F5A1C92E84F00DA138C /* Sources */,
+				AB547F5B1C92E84F00DA138C /* Frameworks */,
+				AB547F5C1C92E84F00DA138C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB547F601C92E84F00DA138C /* PBXTargetDependency */,
+			);
+			name = TakeVideoTests;
+			productName = TakeVideoTests;
+			productReference = AB547F5E1C92E84F00DA138C /* TakeVideoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AB547F681C92E84F00DA138C /* TakeVideoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB547F781C92E84F00DA138C /* Build configuration list for PBXNativeTarget "TakeVideoUITests" */;
+			buildPhases = (
+				AB547F651C92E84F00DA138C /* Sources */,
+				AB547F661C92E84F00DA138C /* Frameworks */,
+				AB547F671C92E84F00DA138C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB547F6B1C92E84F00DA138C /* PBXTargetDependency */,
+			);
+			name = TakeVideoUITests;
+			productName = TakeVideoUITests;
+			productReference = AB547F691C92E84F00DA138C /* TakeVideoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB547F421C92E84F00DA138C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = guoyanchang;
+				TargetAttributes = {
+					AB547F491C92E84F00DA138C = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					AB547F5D1C92E84F00DA138C = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = AB547F491C92E84F00DA138C;
+					};
+					AB547F681C92E84F00DA138C = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = AB547F491C92E84F00DA138C;
+					};
+				};
+			};
+			buildConfigurationList = AB547F451C92E84F00DA138C /* Build configuration list for PBXProject "TakeVideo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AB547F411C92E84F00DA138C;
+			productRefGroup = AB547F4B1C92E84F00DA138C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB547F491C92E84F00DA138C /* TakeVideo */,
+				AB547F5D1C92E84F00DA138C /* TakeVideoTests */,
+				AB547F681C92E84F00DA138C /* TakeVideoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB547F481C92E84F00DA138C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB547F581C92E84F00DA138C /* LaunchScreen.storyboard in Resources */,
+				AB547F551C92E84F00DA138C /* Assets.xcassets in Resources */,
+				AB547F531C92E84F00DA138C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB547F5C1C92E84F00DA138C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB547F671C92E84F00DA138C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB547F461C92E84F00DA138C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB547F501C92E84F00DA138C /* ViewController.swift in Sources */,
+				AB547F4E1C92E84F00DA138C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB547F5A1C92E84F00DA138C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB547F631C92E84F00DA138C /* TakeVideoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB547F651C92E84F00DA138C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB547F6E1C92E84F00DA138C /* TakeVideoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB547F601C92E84F00DA138C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB547F491C92E84F00DA138C /* TakeVideo */;
+			targetProxy = AB547F5F1C92E84F00DA138C /* PBXContainerItemProxy */;
+		};
+		AB547F6B1C92E84F00DA138C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB547F491C92E84F00DA138C /* TakeVideo */;
+			targetProxy = AB547F6A1C92E84F00DA138C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AB547F511C92E84F00DA138C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB547F521C92E84F00DA138C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AB547F561C92E84F00DA138C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB547F571C92E84F00DA138C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB547F701C92E84F00DA138C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB547F711C92E84F00DA138C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AB547F731C92E84F00DA138C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TakeVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchang.TakeVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AB547F741C92E84F00DA138C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TakeVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchang.TakeVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AB547F761C92E84F00DA138C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TakeVideoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchang.TakeVideoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeVideo.app/TakeVideo";
+			};
+			name = Debug;
+		};
+		AB547F771C92E84F00DA138C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TakeVideoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchang.TakeVideoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeVideo.app/TakeVideo";
+			};
+			name = Release;
+		};
+		AB547F791C92E84F00DA138C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TakeVideoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchang.TakeVideoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TakeVideo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		AB547F7A1C92E84F00DA138C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TakeVideoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanchang.TakeVideoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TakeVideo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB547F451C92E84F00DA138C /* Build configuration list for PBXProject "TakeVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB547F701C92E84F00DA138C /* Debug */,
+				AB547F711C92E84F00DA138C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB547F721C92E84F00DA138C /* Build configuration list for PBXNativeTarget "TakeVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB547F731C92E84F00DA138C /* Debug */,
+				AB547F741C92E84F00DA138C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AB547F751C92E84F00DA138C /* Build configuration list for PBXNativeTarget "TakeVideoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB547F761C92E84F00DA138C /* Debug */,
+				AB547F771C92E84F00DA138C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AB547F781C92E84F00DA138C /* Build configuration list for PBXNativeTarget "TakeVideoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB547F791C92E84F00DA138C /* Debug */,
+				AB547F7A1C92E84F00DA138C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB547F421C92E84F00DA138C /* Project object */;
+}
