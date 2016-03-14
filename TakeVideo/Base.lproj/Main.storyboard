@@ -32,6 +32,9 @@
                                 <state key="normal" title="编辑视频">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="EditFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SQA-RI-uby"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SP-2z-Ld8">
                                 <rect key="frame" x="277" y="85" width="68" height="30"/>

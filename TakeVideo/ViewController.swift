@@ -11,6 +11,7 @@ import MobileCoreServices
 import AssetsLibrary
 import AVKit
 import AVFoundation
+import Foundation
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -109,9 +110,58 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // 3
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
+    func createFile(name:String,fileBaseUrl:NSURL){
+        let manager = NSFileManager.defaultManager()
     
+        
+        let file = fileBaseUrl.URLByAppendingPathComponent(name)
+        print("文件: \(file)")
+        let exist = manager.fileExistsAtPath(file.path!)
+        if !exist {
+            let data = NSData(base64EncodedString:"aGVsbG8gd29ybGQ=",options:.IgnoreUnknownCharacters)
+            let createSuccess = manager.createFileAtPath(file.path!,contents:data,attributes:nil)
+            print("文件创建结果: \(createSuccess)")
+        }
+    }
+    @IBAction func EditFile(sender: AnyObject) {
+        
+        
+        //在文档目录下新建test.txt文件
+        let manager = NSFileManager.defaultManager()
+        let urlForDocument = manager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
+        let url = urlForDocument[0] as NSURL
     
-
+        createFile("test.txt", fileBaseUrl: url)
+        
+        let urlsForDocDirectory = manager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
+        let docPath:NSURL = urlsForDocDirectory[0] as NSURL
+        let file = docPath.URLByAppendingPathComponent("test.txt")
+        
+       
+        let data = manager.contentsAtPath(file.path!)
+        var readString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        print("文件内容: \(readString)")
+        let string = "添加一些文字到文件末尾"
+        let appendedData = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        do{
+            let writeHandler = try NSFileHandle(forWritingToURL:file);
+            writeHandler.seekToEndOfFile()
+            writeHandler.writeData(appendedData!)
+        }catch{
+            
+        }
+    
+        //createFile("folder/new.txt", fileBaseUrl: url)
+    }
+    
+//    func saveMovie(info: [NSObject : AnyObject],fileName:String){
+//        let filePath       = SCPath.getDocumentPath().stringByAppendingString(fileName)
+//        //获取系统保存的视频的URL
+//        let mediaUrl:NSURL = info[UIImagePickerControllerMediaURL] as! NSURL
+//        //转换为NSData
+//        let mediaData      = NSData(contentsOfURL: mediaUrl)
+//        mediaData!.writeToFile(filePath, atomically: true)
+//    }
     
     // MARK: UIImagePickerControllerDelegate delegate methods
     // Finished recording a video
