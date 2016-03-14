@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TakeVideo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,49 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8XX-E6-Hbn">
+                                <rect key="frame" x="277" y="205" width="68" height="30"/>
+                                <state key="normal" title="查看视频">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wPJ-X3-6Es"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfF-2t-o3S">
+                                <rect key="frame" x="277" y="143" width="68" height="30"/>
+                                <state key="normal" title="编辑视频">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SP-2z-Ld8">
+                                <rect key="frame" x="277" y="85" width="68" height="30"/>
+                                <state key="normal" title="录制视频">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="takeVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sy0-Yh-2ZX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4SP-2z-Ld8" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="23:300" constant="22" id="0ge-0F-PB8"/>
+                            <constraint firstItem="4SP-2z-Ld8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="65" id="2aJ-OR-yya"/>
+                            <constraint firstItem="8XX-E6-Hbn" firstAttribute="leading" secondItem="4SP-2z-Ld8" secondAttribute="leading" id="A7g-MJ-Jbs"/>
+                            <constraint firstItem="PfF-2t-o3S" firstAttribute="top" secondItem="4SP-2z-Ld8" secondAttribute="bottom" constant="28" id="QIf-m5-w3a"/>
+                            <constraint firstItem="PfF-2t-o3S" firstAttribute="leading" secondItem="4SP-2z-Ld8" secondAttribute="leading" id="YlD-OV-dnx"/>
+                            <constraint firstItem="8XX-E6-Hbn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="23:300" constant="22" id="eoR-wV-0HS"/>
+                            <constraint firstItem="PfF-2t-o3S" firstAttribute="trailing" secondItem="4SP-2z-Ld8" secondAttribute="trailing" id="mvw-az-jnO"/>
+                            <constraint firstItem="4SP-2z-Ld8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="11" id="sIZ-S6-Clk"/>
+                            <constraint firstItem="8XX-E6-Hbn" firstAttribute="top" secondItem="PfF-2t-o3S" secondAttribute="bottom" constant="32" id="vAy-K9-2N1"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="302" y="-115"/>
         </scene>
     </scenes>
 </document>
