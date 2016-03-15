@@ -17,19 +17,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+
         // Dispose of any resources that can be recreated.
     }
     
     var controller = UIImagePickerController()
     var assetsLibrary = ALAssetsLibrary()
-    
     let imagePicker: UIImagePickerController! = UIImagePickerController()
-    let saveFileName = "/test.mp4"
+    
+    let videoDirPath:String = NSHomeDirectory() + "/Documents/video/"
+    let soundDirPath:String = NSHomeDirectory() + "/Documents/sound/"
+    let confDirPath:String = NSHomeDirectory() + "/Documents/conf/"
+    
+    let fileManager = NSFileManager.defaultManager()
 
     @IBAction func takeVideo(sender: AnyObject) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -38,9 +44,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 imagePicker.sourceType = .Camera
                 imagePicker.mediaTypes = [kUTTypeMovie as String]
                 imagePicker.allowsEditing = false
+                imagePicker.videoQuality = .TypeHigh
                 imagePicker.delegate = self
-                
-                presentViewController(imagePicker, animated: true, completion: {})
+                //self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+                self.presentViewController(imagePicker, animated: true, completion: {print("camera completed")})
             } else {
                 postAlert("Rear camera doesn't exist", message: "Application cannot access the camera.")
             }
@@ -53,11 +60,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBAction func viewVideo(sender: AnyObject) {
         // Display Photo Library
         print("Play a video")
-        controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        controller.mediaTypes = [kUTTypeMovie as String]
-        controller.delegate = self
+
         
-//        presentViewController(controller, animated: true, completion: nil)
+        let urlsForDocDirectory = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
+        let docPath:NSURL = urlsForDocDirectory[0] as NSURL
+        let file = docPath.URLByAppendingPathComponent("video")
+        var content : [String] = []
+        do{try content = fileManager.contentsOfDirectoryAtPath(file.path!)}catch{}
+       
+        print("contentsOfPath: \(content)")
+        
         print("got a video")
 //        
 //        // Find the video in the app's document directory
@@ -78,75 +90,107 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 //        }
 
     }
-
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         
         // 1
         let mediaType:AnyObject? = info[UIImagePickerControllerMediaType]
-        
-        if let type:AnyObject = mediaType {
-            if type is String {
-                let stringType = type as! String
-                if stringType == kUTTypeMovie as String {
-                    let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL
-                    if let url = urlOfVideo {
-                        // 2
-                        assetsLibrary.writeVideoAtPathToSavedPhotosAlbum(url,
-                            completionBlock: {(url: NSURL!, error: NSError!) in
-                                if let theError = error{
-                                    print("Error saving video = \(theError)")
-                                }
-                                else {
-                                    print("no errors happened")
-                                }
-                        })
-                    }
-                }
-                
+    
+        if mediaType is String{
+            
+            let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL
+            var videoName : String = ""
+            let alertController = UIAlertController(title: "视频名称", message: "输入视频的文件名", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addTextFieldWithConfigurationHandler {
+                (textField: UITextField!) -> Void in
+                textField.placeholder = "文件名"
             }
+            let okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default) {
+                (action: UIAlertAction!) -> Void in
+                let tmp = (alertController.textFields?.first)! as UITextField
+                
+                videoName = tmp.text!
+                if videoName != ""{
+                    videoName = videoName + ".mp4"
+                    print("videoName is \(videoName)")
+                    if !self.fileManager.fileExistsAtPath(self.videoDirPath) {
+                        do{try self.fileManager.createDirectoryAtPath(self.videoDirPath,withIntermediateDirectories: true, attributes: nil)}catch{}
+                    }
+                    let videoData = NSData(contentsOfURL: urlOfVideo!)
+                    videoData?.writeToFile(self.videoDirPath + videoName, atomically: false)
+                }else{
+                    print("videoName is empty")
+                }
+                self.dismissViewControllerAnimated(true, completion: {
+                    // Anything you want to happen when the user selects cancel
+                })
+            }
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel){
+                (action:UIAlertAction!) -> Void in
+                self.dismissViewControllerAnimated(true, completion: {
+                    // Anything you want to happen when the user selects cancel
+                })
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            picker.presentViewController(alertController, animated: true, completion: nil)
+            
+                    
+//                    if let url = urlOfVideo {
+//                        // 2
+//                        assetsLibrary.writeVideoAtPathToSavedPhotosAlbum(url,
+//                            completionBlock: {(url: NSURL!, error: NSError!) in
+//                                if let theError = error{
+//                                    print("Error saving video = \(theError)")
+//                                }
+//                                else {
+//                                    print("no errors happened")
+//                                }
+//                        })
+//                    }
+        
         }
         
-        // 3
-        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     func createFile(name:String,fileBaseUrl:NSURL){
-        let manager = NSFileManager.defaultManager()
-    
         
+    
         let file = fileBaseUrl.URLByAppendingPathComponent(name)
         print("文件: \(file)")
-        let exist = manager.fileExistsAtPath(file.path!)
+        let exist = fileManager.fileExistsAtPath(file.path!)
         if !exist {
             let data = NSData(base64EncodedString:"aGVsbG8gd29ybGQ=",options:.IgnoreUnknownCharacters)
-            let createSuccess = manager.createFileAtPath(file.path!,contents:data,attributes:nil)
+            let createSuccess = fileManager.createFileAtPath(file.path!,contents:data,attributes:nil)
             print("文件创建结果: \(createSuccess)")
         }
     }
     @IBAction func EditFile(sender: AnyObject) {
         
         
-        //在文档目录下新建test.txt文件
-        let manager = NSFileManager.defaultManager()
-        let urlForDocument = manager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
+        
+        let urlForDocument = fileManager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
         let url = urlForDocument[0] as NSURL
     
         createFile("test.txt", fileBaseUrl: url)
         
-        let urlsForDocDirectory = manager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
+        let urlsForDocDirectory = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
         let docPath:NSURL = urlsForDocDirectory[0] as NSURL
         let file = docPath.URLByAppendingPathComponent("test.txt")
         
        
-        let data = manager.contentsAtPath(file.path!)
-        var readString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-        print("文件内容: \(readString)")
+        let data = fileManager.contentsAtPath(file.path!)
+        let readString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        print("文件内容: \(readString!)")
         let string = "添加一些文字到文件末尾"
         let appendedData = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
         do{
+            //let writeHandler = try NSFileHandle(forWritingToURL:file);
             let writeHandler = try NSFileHandle(forWritingToURL:file);
             writeHandler.seekToEndOfFile()
             writeHandler.writeData(appendedData!)
+            writeHandler.closeFile()
         }catch{
             
         }
@@ -154,44 +198,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         //createFile("folder/new.txt", fileBaseUrl: url)
     }
     
-//    func saveMovie(info: [NSObject : AnyObject],fileName:String){
-//        let filePath       = SCPath.getDocumentPath().stringByAppendingString(fileName)
-//        //获取系统保存的视频的URL
-//        let mediaUrl:NSURL = info[UIImagePickerControllerMediaURL] as! NSURL
-//        //转换为NSData
-//        let mediaData      = NSData(contentsOfURL: mediaUrl)
-//        mediaData!.writeToFile(filePath, atomically: true)
-//    }
-    
-    // MARK: UIImagePickerControllerDelegate delegate methods
-    // Finished recording a video
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        print("Got a video")
-//        
-//        if let pickedVideo:NSURL = (info[UIImagePickerControllerMediaURL] as? NSURL) {
-//            // Save video to the main photo album
-//            let selectorToCall = Selector("videoWasSavedSuccessfully:didFinishSavingWithError:context:")
-//            UISaveVideoAtPathToSavedPhotosAlbum(pickedVideo.relativePath!, self, selectorToCall, nil)
-//            
-//            // Save the video to the app directory so we can play it later
-//            let videoData = NSData(contentsOfURL: pickedVideo)
-//            let paths = NSSearchPathForDirectoriesInDomains(
-//                NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-//            let documentsDirectory: AnyObject = paths[0]
-//            let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
-//            videoData?.writeToFile(dataPath, atomically: false)
-//            
-//        }
-//        
-//        imagePicker.dismissViewControllerAnimated(true, completion: {
-//            // Anything you want to happen when the user saves an video
-//        })
-//    }
-    
-    // Called when the user selects cancel
+
+        // Called when the user selects cancel
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         print("User canceled image")
-        dismissViewControllerAnimated(true, completion: {
+        self.dismissViewControllerAnimated(true, completion: {
             // Anything you want to happen when the user selects cancel
         })
     }

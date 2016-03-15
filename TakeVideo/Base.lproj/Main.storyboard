@@ -55,7 +55,7 @@
                             <constraint firstItem="PfF-2t-o3S" firstAttribute="leading" secondItem="4SP-2z-Ld8" secondAttribute="leading" id="YlD-OV-dnx"/>
                             <constraint firstItem="8XX-E6-Hbn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="23:300" constant="22" id="eoR-wV-0HS"/>
                             <constraint firstItem="PfF-2t-o3S" firstAttribute="trailing" secondItem="4SP-2z-Ld8" secondAttribute="trailing" id="mvw-az-jnO"/>
-                            <constraint firstItem="4SP-2z-Ld8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="11" id="sIZ-S6-Clk"/>
+                            <constraint firstItem="4SP-2z-Ld8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="11" id="sIZ-S6-Clk" userLabel="录制视频.centerX = centerX"/>
                             <constraint firstItem="8XX-E6-Hbn" firstAttribute="top" secondItem="PfF-2t-o3S" secondAttribute="bottom" constant="32" id="vAy-K9-2N1"/>
                         </constraints>
                     </view>
