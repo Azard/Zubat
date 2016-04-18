@@ -18,7 +18,9 @@ class EditVideoController: UIViewController {
     var recorderSeetingsDic:[String : AnyObject]? //录音器设置参数数组
     var curSeconds:Int = 0
     var allMessages : [Int:Message]?
-    
+    var startingPoint : CGPoint = CGPoint(x: -1,y: -1)
+    var endingPoint : CGPoint = CGPoint()
+
     
     @IBOutlet weak var textButton: UIButton!
     
@@ -37,7 +39,7 @@ class EditVideoController: UIViewController {
             tmpSecond = curSeconds
             let soundPath = curVideo+"\(tmpSecond).acc"
             recording = true
-            print(Message.soundDirPath + soundPath)
+            //print(Message.soundDirPath + soundPath)
             //初始化录音器
             let session:AVAudioSession = AVAudioSession.sharedInstance()
             //设置录音类型
@@ -64,7 +66,7 @@ class EditVideoController: UIViewController {
             recorder = nil
 
             sender.setTitle("录音", forState: UIControlState.Normal)
-            print(soundPath)
+            //print(soundPath)
             allMessages![tmpSecond] = Message(type:1,second: tmpSecond,content: soundPath)
             self.playButton.setImage(UIImage(named: "btn-play"), forState: UIControlState.Normal)
             
@@ -116,13 +118,9 @@ class EditVideoController: UIViewController {
             }
         })
         
-        //初始化录音器
         let session:AVAudioSession = AVAudioSession.sharedInstance()
-        //设置录音类型
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
-        //设置支持后台
         try! session.setActive(true)
-        //初始化字典并添加设置参数
         recorderSeetingsDic =
             [
                 AVFormatIDKey: NSNumber(unsignedInt: kAudioFormatMPEG4AAC),
@@ -133,6 +131,9 @@ class EditVideoController: UIViewController {
         ]
         self.allMessages = Message.loadMessage(curVideo)
         textDisappear()
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(EditVideoController.handlePanGesture(_:)))
+        self.view.addGestureRecognizer(panGesture)
         
     }
 
@@ -162,15 +163,19 @@ class EditVideoController: UIViewController {
     @IBAction func textCancelPress(sender: UIButton) {
         textDisappear()
     }
+    func stopVideo()  {
+        self.playVC.player?.pause()
+        self.playing = false
+        self.playButton.setImage(UIImage(named: "btn-play"), forState: UIControlState.Normal)
+        self.playButton.hidden = false
+
+    }
     func textAppear(){
         textMessage.hidden = false
         textFinish.hidden = false
         textCancel.hidden = false
         textMessage.becomeFirstResponder()
-        self.playVC.player?.pause()
-        self.playing = false
-        self.playButton.setImage(UIImage(named: "btn-play"), forState: UIControlState.Normal)
-        self.playButton.hidden = false
+        stopVideo()
     }
     func textDisappear(){
         textMessage.hidden = true
@@ -178,6 +183,91 @@ class EditVideoController: UIViewController {
         textFinish.hidden = true
         textCancel.hidden = true
     }
+    
+    var tmpArrow:Arrow?
+    var tmpRect:Rectangle?
+    var arrowMessage:Bool = false
+    @IBAction func arrowMessagePress(sender: UIButton) {
+        if(arrowMessage){
+            sender.setTitle("箭头", forState: UIControlState.Normal)
+            arrowMessage = false
+            let content = "\(startingPoint.x),\(startingPoint.y),\(endingPoint.x),\(endingPoint.y)"
+            allMessages![curSeconds] = Message(type:2,second: curSeconds,content: content)
+            tmpArrow?.removeFromSuperview()
+            startingPoint = CGPoint(x: -1,y: -1)
+        }else{
+            sender.setTitle("完成", forState: UIControlState.Normal)
+            arrowMessage = true
+            stopVideo()
+        }
+        
+    }
+    
+    var rectMessage:Bool = false
+    @IBAction func rectMessagePress(sender: UIButton) {
+        if(rectMessage){
+            sender.setTitle("矩形", forState: UIControlState.Normal)
+            rectMessage = false
+            let content = "\(startingPoint.x),\(startingPoint.y),\(endingPoint.x),\(endingPoint.y)"
+            print(content)
+            allMessages![curSeconds] = Message(type:3,second: curSeconds,content: content)
+            tmpRect?.removeFromSuperview()
+            startingPoint = CGPoint(x: -1,y: -1)
+        }else{
+            sender.setTitle("完成", forState: UIControlState.Normal)
+            rectMessage = true
+            stopVideo()
+        }
+    }
+    
+    
+    func handlePanGesture(sender: UIPanGestureRecognizer){
+        //得到拖的过程中的xy坐标
+        //let translation : CGPoint = sender.velocityInView(canvasView)
+        var location : CGPoint = sender.locationInView(playVC)
+        location.y = location.y + 50
+        if(arrowMessage){
+            if(startingPoint.x < 0){
+                startingPoint = location
+            }else{
+                endingPoint = location
+                let x = min(startingPoint.x,endingPoint.x)
+                let y = min(startingPoint.y,endingPoint.y)
+                let width = max(endingPoint.x-startingPoint.x,startingPoint.x-endingPoint.x)
+                let height = max(endingPoint.y-startingPoint.y,startingPoint.y-endingPoint.y)
+                let viewRect = CGRect(x: x-5, y: y-5, width: width+5, height: height+5)
+                if let _:Arrow = tmpArrow{
+                    tmpArrow?.removeFromSuperview()
+                }
+                let arrow = Arrow(frame: viewRect)
+                arrow.passingValues(CGPoint(x: startingPoint.x-x,y: startingPoint.y-y), endingPointValue: CGPoint(x: endingPoint.x-x,y: endingPoint.y-y))
+                tmpArrow = arrow
+
+                self.view.addSubview(arrow);
+            }
+        }else if(rectMessage){
+            if(startingPoint.x < 0){
+                startingPoint = location
+            }else{
+                endingPoint = location
+                let x = min(startingPoint.x,endingPoint.x)
+                let y = min(startingPoint.y,endingPoint.y)
+                let width = max(endingPoint.x-startingPoint.x,startingPoint.x-endingPoint.x)
+                let height = max(endingPoint.y-startingPoint.y,startingPoint.y-endingPoint.y)
+                let viewRect = CGRect(x: x, y: y, width: width, height: height)
+                if let _:Rectangle = tmpRect{
+                    tmpRect?.removeFromSuperview()
+                }
+                let rect = Rectangle(frame: viewRect)
+                tmpRect = rect
+                self.view.addSubview(rect);
+            }
+
+        }
+        //print("(\(location.x),\(location.y))")
+        
+    }
+    
     
     @IBAction func exitEdit(sender: AnyObject) {
          dismissViewControllerAnimated(true, completion: nil)

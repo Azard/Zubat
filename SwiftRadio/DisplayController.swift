@@ -13,7 +13,8 @@ class DisplayController: UIViewController {
     var curVideo = ""
     var playing : Bool = false
     var player:AVAudioPlayer? //播放器
-    
+    var tmpArrow:Arrow?
+    var tmpRect:Rectangle?
     @IBOutlet weak var playButton: UIButton!
     
     @IBAction func playButtonPress(sender: UIButton) {
@@ -32,6 +33,13 @@ class DisplayController: UIViewController {
     
     @IBAction func textOKPress(sender: UIButton) {
         textDisappear()
+        if let _:Arrow = tmpArrow{
+            tmpArrow?.removeFromSuperview()
+        }
+        if let _:Rectangle = tmpRect{
+            tmpRect?.removeFromSuperview()
+        }
+        player?.stop()
     }
     
     @IBOutlet weak var videoProgress: UIProgressView!
@@ -102,7 +110,7 @@ class DisplayController: UIViewController {
                 let m = allMessages![line]
                 if(m?.type == 0){
                     textAppear((m?.content)!)
-                }else {
+                }else if(m?.type == 1){
                     //let docDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
                     //.UserDomainMask, true)[0]
                     print(Message.soundDirPath + (m?.content)!)
@@ -113,6 +121,45 @@ class DisplayController: UIViewController {
                     }else{
                         player?.play()
                     }
+                }else if(m?.type == 2){
+                    let content:String = (m?.content)!
+                    let xyArray = content.componentsSeparatedByString(",")
+                    let x1 = CGFloat(Float(xyArray[0])!)
+                    let y1 = CGFloat(Float(xyArray[1])!)
+                    let x2 = CGFloat(Float(xyArray[2])!)
+                    let y2 = CGFloat(Float(xyArray[3])!)
+                    let startingPoint = CGPoint(x:x1,y:y1)
+                    let endingPoint = CGPoint(x:x2,y:y2)
+                    let x = min(startingPoint.x,endingPoint.x)
+                    let y = min(startingPoint.y,endingPoint.y)
+                    let width = max(endingPoint.x-startingPoint.x,startingPoint.x-endingPoint.x)
+                    let height = max(endingPoint.y-startingPoint.y,startingPoint.y-endingPoint.y)
+                    let viewRect = CGRect(x: x-5, y: y-5, width: width+5, height: height+5)
+                   
+                    let arrow = Arrow(frame: viewRect)
+                    arrow.passingValues(CGPoint(x: startingPoint.x-x,y: startingPoint.y-y), endingPointValue: CGPoint(x: endingPoint.x-x,y: endingPoint.y-y))
+                    tmpArrow = arrow
+                    self.view.addSubview(arrow);
+                    
+                }else if(m?.type == 3){
+                    let content:String = (m?.content)!
+                    let xyArray = content.componentsSeparatedByString(",")
+                    let x1 = CGFloat(Float(xyArray[0])!)
+                    let y1 = CGFloat(Float(xyArray[1])!)
+                    let x2 = CGFloat(Float(xyArray[2])!)
+                    let y2 = CGFloat(Float(xyArray[3])!)
+                    print(x1,y1,x2,y2)
+                    let startingPoint = CGPoint(x:x1,y:y1)
+                    let endingPoint = CGPoint(x:x2,y:y2)
+                    let x = min(startingPoint.x,endingPoint.x)
+                    let y = min(startingPoint.y,endingPoint.y)
+                    let width = max(endingPoint.x-startingPoint.x,startingPoint.x-endingPoint.x)
+                    let height = max(endingPoint.y-startingPoint.y,startingPoint.y-endingPoint.y)
+                    let viewRect = CGRect(x: x, y: y, width: width, height: height)
+                    
+                    let rect = Rectangle(frame: viewRect)
+                    tmpRect = rect
+                    self.view.addSubview(rect);
                 }
                 self.playButton.setImage(UIImage(named: "btn-play"), forState: UIControlState.Normal)
                 self.playButton.hidden = false
@@ -134,7 +181,6 @@ class DisplayController: UIViewController {
     }
     func textDisappear(){
         textMessage.hidden = true
-        textOK.hidden = true
         //textMessage.resignFirstResponder()
         
     }
