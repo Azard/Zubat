@@ -29,9 +29,9 @@ class DisplayController: UIViewController {
             self.display.player?.pause()
         }
     }
-    @IBOutlet weak var textOK: UIButton!
     
-    @IBAction func textOKPress(sender: UIButton) {
+    @IBAction func jumpMessage(sender: UIBarButtonItem) {
+        print("jump")
         textDisappear()
         if let _:Arrow = tmpArrow{
             tmpArrow?.removeFromSuperview()
@@ -56,6 +56,7 @@ class DisplayController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         messageTable.registerNib(cellNib, forCellReuseIdentifier: "NothingFound")
         
@@ -175,9 +176,7 @@ class DisplayController: UIViewController {
         textMessage.hidden = false
         textMessage.text = content
         textMessage.editable = false
-        textOK.hidden = false
 
-        
     }
     func textDisappear(){
         textMessage.hidden = true
