@@ -9,7 +9,7 @@
 import Foundation
 
 class Message{
-    var type : Int//0代表文字，1代表声音
+    var type : Int//0代表文字，1代表声音,2代表箭头，3代表矩形
     var second : Int//这里second代表百分之一秒
     var timeStamp : String
     var content:String
@@ -44,7 +44,7 @@ class Message{
         for key in sortedKeys{
             array.append(tmp[key]!)
         }
-        print(array)
+        //print(array)
         let nsarray = array as NSArray
         return nsarray.writeToFile(self.mesDirPath + videoName + ".plist", atomically: false)
         
@@ -58,11 +58,11 @@ class Message{
                 allMessages[Int(a[1])!] = Message(type: Int(a[0])!,second: Int(a[1])!,content: a[2])
             }
         }
-        var contents:[String] = []
-        do{try contents = fileManager.contentsOfDirectoryAtPath(soundDirPath)}catch{}
-        for content in contents{
-            print(content)
-        }
+//        var contents:[String] = []
+//        do{try contents = fileManager.contentsOfDirectoryAtPath(soundDirPath)}catch{}
+////        for content in contents{
+////            print(content)
+////        }
 
         return allMessages
     }

@@ -15,6 +15,8 @@
 		945DB3C51AD5A6E200495EBB /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */; };
 		94D260911B45D20000DE671C /* SwiftRadio-Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */; };
 		94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */; };
+		AB4D66751CC4DA6B000FE245 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D66741CC4DA6B000FE245 /* Arrow.swift */; };
+		AB4D66771CC4DA81000FE245 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D66761CC4DA81000FE245 /* Rectangle.swift */; };
 		AB547F821C99755B00DA138C /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F811C99755B00DA138C /* IndexViewController.swift */; };
 		AB547F841C99A05A00DA138C /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F831C99A05A00DA138C /* Video.swift */; };
 		AB547F8A1C9AC1F400DA138C /* EditVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F891C9AC1F400DA138C /* EditVideoController.swift */; };
@@ -47,6 +49,8 @@
 		945DB3C41AD5A6E200495EBB /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		94D260901B45D20000DE671C /* SwiftRadio-Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftRadio-Settings.swift"; sourceTree = "<group>"; };
 		94D30EA61AD07A880024FE96 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
+		AB4D66741CC4DA6B000FE245 /* Arrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
+		AB4D66761CC4DA81000FE245 /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		AB547F811C99755B00DA138C /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		AB547F831C99A05A00DA138C /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AB547F891C9AC1F400DA138C /* EditVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVideoController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 			children = (
 				AB547F831C99A05A00DA138C /* Video.swift */,
 				ABC0DB351CA3E6B60010A412 /* Message.swift */,
+				AB4D66741CC4DA6B000FE245 /* Arrow.swift */,
+				AB4D66761CC4DA81000FE245 /* Rectangle.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -274,8 +280,10 @@
 				94D260911B45D20000DE671C /* SwiftRadio-Settings.swift in Sources */,
 				94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */,
 				AB547F8A1C9AC1F400DA138C /* EditVideoController.swift in Sources */,
+				AB4D66771CC4DA81000FE245 /* Rectangle.swift in Sources */,
 				9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */,
 				ABC0DB3C1CA4FF5E0010A412 /* MessageTableViewCell.swift in Sources */,
+				AB4D66751CC4DA6B000FE245 /* Arrow.swift in Sources */,
 				AB547F821C99755B00DA138C /* IndexViewController.swift in Sources */,
 				942A3F371AE43DF80011396E /* StationsViewController.swift in Sources */,
 				AB547F8E1C9B060B00DA138C /* PlayVideoView.swift in Sources */,

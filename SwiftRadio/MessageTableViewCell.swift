@@ -31,11 +31,15 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageType: UILabel!
     
     func configureMessageCell(message: Message) {
-        if(message.type == 1){
-            messageType.text = "声音"
-        }
-        else{
+        if(message.type == 0){
             messageType.text = "文字"
+        }
+        else if(message.type == 1){
+            messageType.text = "声音"
+        }else if(message.type == 2){
+            messageType.text = "箭头"
+        }else if(message.type == 3){
+            messageType.text = "矩形"
         }
         
         messageTime.text = message.timeStamp
