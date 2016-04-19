@@ -52,7 +52,8 @@ class EditVideoController: UIViewController {
                 recorder!.meteringEnabled = true
                 recorder!.prepareToRecord()
                 recorder!.record()
-                sender.setTitle("完成", forState: UIControlState.Normal)
+                //sender.setTitle("完成", forState: UIControlState.Normal)
+                sender.setImage(UIImage(named: "complete"), forState: UIControlState.Normal)
                 self.playVC.player?.pause()
                 self.playing = false
                 self.playButton.setImage(UIImage(named: "stationImage"), forState: UIControlState.Normal)
@@ -65,7 +66,8 @@ class EditVideoController: UIViewController {
             
             recorder = nil
 
-            sender.setTitle("录音", forState: UIControlState.Normal)
+            //sender.setTitle("录音", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "audiorecorder"), forState: UIControlState.Normal)
             //print(soundPath)
             allMessages![tmpSecond] = Message(type:1,second: tmpSecond,content: soundPath)
             self.playButton.setImage(UIImage(named: "btn-play"), forState: UIControlState.Normal)
@@ -189,14 +191,16 @@ class EditVideoController: UIViewController {
     var arrowMessage:Bool = false
     @IBAction func arrowMessagePress(sender: UIButton) {
         if(arrowMessage){
-            sender.setTitle("箭头", forState: UIControlState.Normal)
+            //sender.setTitle("箭头", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "arrow"), forState: UIControlState.Normal)
             arrowMessage = false
             let content = "\(startingPoint.x),\(startingPoint.y),\(endingPoint.x),\(endingPoint.y)"
             allMessages![curSeconds] = Message(type:2,second: curSeconds,content: content)
             tmpArrow?.removeFromSuperview()
             startingPoint = CGPoint(x: -1,y: -1)
         }else{
-            sender.setTitle("完成", forState: UIControlState.Normal)
+            //sender.setTitle("完成", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "complete"), forState: UIControlState.Normal)
             arrowMessage = true
             stopVideo()
         }
@@ -206,7 +210,8 @@ class EditVideoController: UIViewController {
     var rectMessage:Bool = false
     @IBAction func rectMessagePress(sender: UIButton) {
         if(rectMessage){
-            sender.setTitle("矩形", forState: UIControlState.Normal)
+            //sender.setTitle("矩形", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "rectangle"), forState: UIControlState.Normal)
             rectMessage = false
             let content = "\(startingPoint.x),\(startingPoint.y),\(endingPoint.x),\(endingPoint.y)"
             print(content)
@@ -214,7 +219,8 @@ class EditVideoController: UIViewController {
             tmpRect?.removeFromSuperview()
             startingPoint = CGPoint(x: -1,y: -1)
         }else{
-            sender.setTitle("完成", forState: UIControlState.Normal)
+            //sender.setTitle("完成", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "complete"), forState: UIControlState.Normal)
             rectMessage = true
             stopVideo()
         }
