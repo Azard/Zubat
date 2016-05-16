@@ -21,9 +21,13 @@
 		AB547F841C99A05A00DA138C /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F831C99A05A00DA138C /* Video.swift */; };
 		AB547F8A1C9AC1F400DA138C /* EditVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F891C9AC1F400DA138C /* EditVideoController.swift */; };
 		AB547F8E1C9B060B00DA138C /* PlayVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB547F8D1C9B060B00DA138C /* PlayVideoView.swift */; };
+		AB6B82D41CE998CE00B8D021 /* SLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B82D31CE998CE00B8D021 /* SLine.swift */; };
+		AB6B82D61CE9990400B8D021 /* CurveLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6B82D51CE9990400B8D021 /* CurveLine.swift */; };
 		ABC0DB361CA3E6B60010A412 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0DB351CA3E6B60010A412 /* Message.swift */; };
 		ABC0DB381CA4FAA10010A412 /* DisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0DB371CA4FAA10010A412 /* DisplayController.swift */; };
 		ABC0DB3C1CA4FF5E0010A412 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0DB3B1CA4FF5E0010A412 /* MessageTableViewCell.swift */; };
+		ABE6C6A01CE1A51500720E67 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE6C69F1CE1A51500720E67 /* Scene.swift */; };
+		ABE6C6A21CE21ED200720E67 /* DWBubbleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE6C6A11CE21ED200720E67 /* DWBubbleMenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +59,13 @@
 		AB547F831C99A05A00DA138C /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AB547F891C9AC1F400DA138C /* EditVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVideoController.swift; sourceTree = "<group>"; };
 		AB547F8D1C9B060B00DA138C /* PlayVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoView.swift; sourceTree = "<group>"; };
+		AB6B82D31CE998CE00B8D021 /* SLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLine.swift; sourceTree = "<group>"; };
+		AB6B82D51CE9990400B8D021 /* CurveLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveLine.swift; sourceTree = "<group>"; };
 		ABC0DB351CA3E6B60010A412 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		ABC0DB371CA4FAA10010A412 /* DisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayController.swift; sourceTree = "<group>"; };
 		ABC0DB3B1CA4FF5E0010A412 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		ABE6C69F1CE1A51500720E67 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		ABE6C6A11CE21ED200720E67 /* DWBubbleMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DWBubbleMenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +165,10 @@
 				ABC0DB351CA3E6B60010A412 /* Message.swift */,
 				AB4D66741CC4DA6B000FE245 /* Arrow.swift */,
 				AB4D66761CC4DA81000FE245 /* Rectangle.swift */,
+				ABE6C69F1CE1A51500720E67 /* Scene.swift */,
+				ABE6C6A11CE21ED200720E67 /* DWBubbleMenuButton.swift */,
+				AB6B82D31CE998CE00B8D021 /* SLine.swift */,
+				AB6B82D51CE9990400B8D021 /* CurveLine.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -216,7 +228,7 @@
 					};
 					9409E1151ABF6FEA00312E2B = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 9LK7FXH9CA;
+						DevelopmentTeam = WJD422338N;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -278,9 +290,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				94D260911B45D20000DE671C /* SwiftRadio-Settings.swift in Sources */,
+				AB6B82D41CE998CE00B8D021 /* SLine.swift in Sources */,
 				94D30EA71AD07A880024FE96 /* StationTableViewCell.swift in Sources */,
 				AB547F8A1C9AC1F400DA138C /* EditVideoController.swift in Sources */,
+				AB6B82D61CE9990400B8D021 /* CurveLine.swift in Sources */,
 				AB4D66771CC4DA81000FE245 /* Rectangle.swift in Sources */,
+				ABE6C6A21CE21ED200720E67 /* DWBubbleMenuButton.swift in Sources */,
+				ABE6C6A01CE1A51500720E67 /* Scene.swift in Sources */,
 				9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */,
 				ABC0DB3C1CA4FF5E0010A412 /* MessageTableViewCell.swift in Sources */,
 				AB4D66751CC4DA6B000FE245 /* Arrow.swift in Sources */,

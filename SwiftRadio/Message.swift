@@ -9,13 +9,15 @@
 import Foundation
 
 class Message{
-    var type : Int//0代表文字，1代表声音,2代表箭头，3代表矩形
+    var type : Int//0代表文字，1代表声音,2代表箭头，3代表矩形,4代表直线，5代表曲线
     var second : Int//这里second代表百分之一秒
     var timeStamp : String
+    var sceneName :String
     var content:String
-    init(type:Int,second:Int,content:String){
+    init(type:Int,second:Int,content:String,scene:String){
         self.type = type
         self.second = second
+        self.sceneName = scene
         let tmp = second/100
         let h = tmp/3600
         let m = (tmp%3600)/60
@@ -37,7 +39,7 @@ class Message{
         var tmp : [Int:[String]]=Dictionary()
         for mes in (messageData.keys){
             let m = messageData[mes];
-            tmp[mes] = ["\(m!.type)","\(m!.second)",m!.content]
+            tmp[mes] = ["\(m!.type)","\(m!.second)",m!.content,m!.sceneName]
         }
         let sortedKeys = Array(tmp.keys).sort(<)
         var array:[[String]] = []
@@ -55,7 +57,7 @@ class Message{
         if self.fileManager.fileExistsAtPath(self.mesDirPath + videoName + ".plist") {
             let arrays = NSArray(contentsOfFile: self.mesDirPath + videoName + ".plist") as! [[String]]
             for a in arrays{
-                allMessages[Int(a[1])!] = Message(type: Int(a[0])!,second: Int(a[1])!,content: a[2])
+                allMessages[Int(a[1])!] = Message(type: Int(a[0])!,second: Int(a[1])!,content: a[2],scene:a[3])
             }
         }
 //        var contents:[String] = []

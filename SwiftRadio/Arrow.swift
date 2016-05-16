@@ -14,6 +14,7 @@ class Arrow: UIView {
     var endingPoint : CGPoint = CGPoint()
     var arrowLength : CGFloat = CGFloat()
     var arrowPath : UIBezierPath = UIBezierPath()
+    var color : Int = 1
     
     
     
@@ -51,8 +52,23 @@ class Arrow: UIView {
         self.layer.shadowRadius = max(4.0, tailWidth)
         
         self.arrowPath = self.bezierPathWithArrowFromPoint(self.startingPoint, endPoint: self.endingPoint, tailWidth: tailWidth, headWidth: headWidth, headLength: headLength)
-        UIColor.redColor().setFill()
-        UIColor.redColor().setStroke()
+        if(color == 1){
+            UIColor.redColor().setFill()
+            UIColor.redColor().setStroke()
+        }
+        else if(color == 2){
+            UIColor.blackColor().setFill()
+            UIColor.blackColor().setStroke()
+        }
+        else if(color == 3){
+            UIColor.yellowColor().setFill()
+            UIColor.yellowColor().setStroke()
+        }
+        else if(color == 4){
+            UIColor.blueColor().setFill()
+            UIColor.blueColor().setStroke()
+        }
+        
         self.arrowPath.fill()
         self.arrowPath.stroke()
         

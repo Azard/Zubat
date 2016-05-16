@@ -30,25 +30,29 @@ class DisplayController: UIViewController {
         }
     }
     
+    @IBOutlet weak var jumpButton: UIBarButtonItem!
     @IBAction func jumpMessage(sender: UIBarButtonItem) {
-        print("jump")
-        textDisappear()
-        if let _:Arrow = tmpArrow{
-            tmpArrow?.removeFromSuperview()
+        if playing == false{
+            playing = true
+            sender.image = UIImage(named: "btn-pause")
+            self.display.player?.play()
+        }else{
+            playing = false
+            sender.image = UIImage(named: "btn-play")
+            self.display.player?.pause()
         }
-        if let _:Rectangle = tmpRect{
-            tmpRect?.removeFromSuperview()
-        }
-        player?.stop()
     }
     
     @IBOutlet weak var videoProgress: UIProgressView!
     @IBOutlet weak var textMessage: UITextView!
     @IBOutlet weak var messageTable: UITableView!
     var allMessages : [Int:Message]?
+    var allScenes : [Int:Scene]?
     var timeLine : [Int] = [Int]()
     var timeOrder : Int = 0
     var curSeconds : Int = 0
+    var sceneLine : [Int] = [Int]()
+    var sceneOrder : Int = 0
     @IBOutlet weak var display: PlayVideoView!
     
     func catchTap(sender : UITapGestureRecognizer){
@@ -66,7 +70,9 @@ class DisplayController: UIViewController {
         messageTable.separatorStyle = UITableViewCellSeparatorStyle.None
         
         self.allMessages = Message.loadMessage(curVideo)
+        self.allScenes = Scene.loadScene(curVideo)
         self.timeLine = Array(self.allMessages!.keys).sort(<)
+        self.sceneLine = Array(self.allScenes!.keys).sort(<)
         print(timeLine)
         dispatch_async(dispatch_get_main_queue()){
             self.messageTable.reloadData()
@@ -77,15 +83,14 @@ class DisplayController: UIViewController {
         let url:NSURL = NSURL(fileURLWithPath: Video.videoDirPath + curVideo)
         let player = AVPlayer(URL: url)
         self.display!.player = player
-        let tap = UITapGestureRecognizer(target: self,action: #selector(EditVideoController.catchTap(_:)))
-        self.display.addGestureRecognizer(tap)
+
         self.display.player?.addPeriodicTimeObserverForInterval(CMTimeMake(1,10), queue: dispatch_get_main_queue(), usingBlock: {(time:CMTime) in
             let currentTime = self.display.player!.currentTime;
             self.curSeconds = Int(currentTime().seconds*100)
             self.displayMessage()
             let totalTime = self.display.player!.currentItem!.duration;
             let progress = CMTimeGetSeconds(currentTime())/CMTimeGetSeconds(totalTime);
-            self.videoProgress.progress = Float32(progress);
+            //self.videoProgress.progress = Float32(progress);
             if progress >= 1.0{
                 self.playButton.hidden = false
                 self.playButton.setImage(UIImage(named: "btn-play"), forState: UIControlState.Normal)
@@ -209,17 +214,17 @@ extension DisplayController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-            if timeLine.count == 0 {
+            if sceneLine.count == 0 {
                 return 1
             } else {
-                return timeLine.count
+                return sceneLine.count
             }
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if timeLine.isEmpty {
+        if sceneLine.isEmpty {
             let cell = tableView.dequeueReusableCellWithIdentifier("NothingFound", forIndexPath: indexPath)
             cell.backgroundColor = UIColor.clearColor()
             cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -235,8 +240,8 @@ extension DisplayController: UITableViewDataSource {
                 cell.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
             }
             
-            let time = timeLine[indexPath.row]
-            cell.configureMessageCell(allMessages![time]!)
+            let time = sceneLine[indexPath.row]
+            cell.configureMessageCell(allScenes![time]!)
             
             return cell
         }

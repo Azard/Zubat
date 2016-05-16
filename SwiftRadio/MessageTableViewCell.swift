@@ -30,19 +30,24 @@ class MessageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var messageType: UILabel!
     
-    func configureMessageCell(message: Message) {
-        if(message.type == 0){
-            messageType.text = "文字"
+    func configureMessageCell(scene: Scene) {
+        if(scene.type == 0){
+            messageType.text = scene.sceneName + "-os"
         }
-        else if(message.type == 1){
-            messageType.text = "声音"
-        }else if(message.type == 2){
-            messageType.text = "箭头"
-        }else if(message.type == 3){
-            messageType.text = "矩形"
+        else if(scene.type == 1){
+            messageType.text = scene.sceneName + "-dub"
         }
-        
-        messageTime.text = message.timeStamp
+        var tmp = scene.startTime/100
+        var h = tmp/3600
+        var m = (tmp%3600)/60
+        var s = tmp%60
+        let startStamp = "\(h):\(m):\(s).\(scene.startTime%100)"
+        tmp = scene.startTime/100
+        h = tmp/3600
+        m = (tmp%3600)/60
+        s = tmp%60
+        let endStamp = "\(h):\(m):\(s).\(scene.endTime%100)"
+        messageTime.text = startStamp + "-" + endStamp
         
     }
     

@@ -9,6 +9,7 @@
 import UIKit
 
 class Rectangle: UIView {
+    var color : Int = 1
     override init(frame: CGRect) {
         super.init(frame: frame)
         //把背景色设为透明
@@ -24,7 +25,18 @@ class Rectangle: UIView {
         let path = UIBezierPath(roundedRect: pathRect, cornerRadius: 20)
         path.lineWidth = 3
         UIColor.clearColor().setFill()
-        UIColor.redColor().setStroke()
+        if(color == 1){
+            UIColor.redColor().setStroke()
+        }
+        else if(color == 2){
+            UIColor.blackColor().setStroke()
+        }
+        else if(color == 3){
+            UIColor.yellowColor().setStroke()
+        }
+        else if(color == 4){
+            UIColor.blueColor().setStroke()
+        }
         path.fill()
         path.stroke()
     }
