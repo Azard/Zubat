@@ -17,11 +17,11 @@ class MessageTableViewCell: UITableViewCell {
         selectedBackgroundView  = selectedView
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+//    override func setSelected(selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//        print("select table1")
+//        // Configure the view for the selected state
+//    }
 
 
 
@@ -32,17 +32,17 @@ class MessageTableViewCell: UITableViewCell {
     
     func configureMessageCell(scene: Scene) {
         if(scene.type == 0){
-            messageType.text = scene.sceneName + "-os"
+            messageType.text = scene.sceneName + "-dub"
         }
         else if(scene.type == 1){
-            messageType.text = scene.sceneName + "-dub"
+            messageType.text = scene.sceneName + "-org"
         }
         var tmp = scene.startTime/100
         var h = tmp/3600
         var m = (tmp%3600)/60
         var s = tmp%60
         let startStamp = "\(h):\(m):\(s).\(scene.startTime%100)"
-        tmp = scene.startTime/100
+        tmp = scene.endTime/100
         h = tmp/3600
         m = (tmp%3600)/60
         s = tmp%60

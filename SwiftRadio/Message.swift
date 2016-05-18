@@ -60,13 +60,22 @@ class Message{
                 allMessages[Int(a[1])!] = Message(type: Int(a[0])!,second: Int(a[1])!,content: a[2],scene:a[3])
             }
         }
-//        var contents:[String] = []
-//        do{try contents = fileManager.contentsOfDirectoryAtPath(soundDirPath)}catch{}
-////        for content in contents{
-////            print(content)
-////        }
+        var contents:[String] = []
+        do{try contents = fileManager.contentsOfDirectoryAtPath(soundDirPath)}catch{}
+        print("sound:\(contents)")
+        for content in contents{
+            print(content)
+        }
 
         return allMessages
+    }
+    static func deleteMessages(videoName : String){
+        if self.fileManager.fileExistsAtPath(self.mesDirPath + videoName + ".plist"){
+            do{
+                try fileManager.removeItemAtPath(mesDirPath + videoName + ".plist")
+            
+            }catch{}
+        }
     }
     
 }

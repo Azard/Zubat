@@ -25,6 +25,7 @@ class EditVideoController: UIViewController {
     var lineMessage : Bool = false
     var curveMessage : Bool = false
     var tmpMessages : [UIView] = []
+    var tmpTime : [Int] = []
 
     
     @IBOutlet weak var playVC: PlayVideoView!
@@ -89,7 +90,7 @@ class EditVideoController: UIViewController {
         var homeLabel =  self.createHomeButtonView("Home")
         homeMenuView = DWBubbleMenuButton(frame:CGRectMake(mainLabel.frame.origin.x+30,mainLabel.frame.origin.y+100,mainLabel.frame.width,mainLabel.frame.height))
         homeMenuView!.homeButtonView = homeLabel
-        var contentArr = ["有声","无声","完成","暂停","播放","OK"]
+        var contentArr = ["dub","Org","Comp","Pause","Play","OK"]
         homeMenuView!.addButtons(self.createDemoButtonArray(0,arr:contentArr))
         self.view.addSubview(homeMenuView!)
         
@@ -97,7 +98,7 @@ class EditVideoController: UIViewController {
         homeLabel =  self.createHomeButtonView("Mes")
         mesMenuView = DWBubbleMenuButton(frame:CGRectMake(messageLabel.frame.origin.x+30,messageLabel.frame.origin.y+100,messageLabel.frame.width,messageLabel.frame.height))
         mesMenuView!.homeButtonView = homeLabel
-        contentArr = ["矩形","直线","箭头","曲线","文本"]
+        contentArr = ["Rect","Line","Arrow","Curve","Text"]
         mesMenuView!.addButtons(self.createDemoButtonArray(10,arr:contentArr))
         self.view.addSubview(mesMenuView!)
         
@@ -105,7 +106,7 @@ class EditVideoController: UIViewController {
         
         colorMenuView = DWBubbleMenuButton(frame:CGRectMake(colorLabel.frame.origin.x+30,colorLabel.frame.origin.y+100,colorLabel.frame.width,colorLabel.frame.height))
         colorMenuView!.homeButtonView = homeLabel
-        contentArr = ["红色","黑色","黄色","蓝色"]
+        contentArr = ["Red","Black","Yellow","Blue"]
         colorMenuView!.addButtons(self.createDemoButtonArray(20,arr:contentArr))
         self.view.addSubview(colorMenuView!)
 
@@ -132,7 +133,7 @@ class EditVideoController: UIViewController {
             button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             button.setTitle(str, forState: UIControlState.Normal)
             
-            button.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+            button.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
             button.layer.cornerRadius = button.frame.size.height / 2.0;
             button.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
             button.clipsToBounds = true;
@@ -274,8 +275,6 @@ class EditVideoController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         self.playVC.player?.pause()
-//        playing = false
-//        recording = false
         Message.storeMessage(curVideo, messageData: allMessages!)
         Scene.storeScene(curVideo, sceneData: allScenes!)
         
@@ -322,6 +321,26 @@ class EditVideoController: UIViewController {
     var maxX:CGFloat = 0
     var maxY:CGFloat = 0
     var curvePoints : [CGPoint] = []
+    func tapHandler(sender:UITapGestureRecognizer) {
+        
+        let alertController = UIAlertController(title: "Delete Message", message: "Do you want to remove it?", preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) {
+            (action: UIAlertAction!) -> Void in
+            let tag = sender.view!.tag
+            if(tag < self.tmpTime.count){
+                self.tmpMessages.removeAtIndex(tag)
+                self.allMessages?.removeValueForKey(self.tmpTime[tag])
+                self.tmpTime.removeAtIndex(tag)
+            }
+            sender.view?.removeFromSuperview()
+        }
+        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel){
+            (action:UIAlertAction!) -> Void in
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     func handlePanGesture(sender: UIPanGestureRecognizer){
         //得到拖的过程中的xy坐标
         //let translation : CGPoint = sender.velocityInView(canvasView)
@@ -344,8 +363,12 @@ class EditVideoController: UIViewController {
                 arrow.color = self.color
                 arrow.passingValues(CGPoint(x: startingPoint.x-x,y: startingPoint.y-y), endingPointValue: CGPoint(x: endingPoint.x-x,y: endingPoint.y-y))
                 tmpArrow = arrow
-
                 self.view.addSubview(arrow);
+                arrow.tag = tmpTime.count
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditVideoController.tapHandler(_:)))
+                //设置手势点击数,双击：点2下
+                tapGesture.numberOfTapsRequired = 2
+                arrow.addGestureRecognizer(tapGesture)
             }
         }else if(rectMessage){
             if(startingPoint.x < 0){
@@ -364,6 +387,11 @@ class EditVideoController: UIViewController {
                 rect.color = self.color
                 tmpRect = rect
                 self.view.addSubview(rect);
+                rect.tag = tmpTime.count
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditVideoController.tapHandler(_:)))
+                //设置手势点击数,双击：点2下
+                tapGesture.numberOfTapsRequired = 2
+                rect.addGestureRecognizer(tapGesture)
             }
 
         }else if(curveMessage){
@@ -394,6 +422,11 @@ class EditVideoController: UIViewController {
                 line.passingValues(curvePoints,minX: minX,minY:minY)
                 tmpCurve = line
                 self.view.addSubview(line)
+                line.tag = tmpTime.count
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditVideoController.tapHandler(_:)))
+                //设置手势点击数,双击：点2下
+                tapGesture.numberOfTapsRequired = 2
+                line.addGestureRecognizer(tapGesture)
             }
         }else if(lineMessage){
             if(startingPoint.x < 0){
@@ -413,22 +446,29 @@ class EditVideoController: UIViewController {
                 line.passingValues(CGPoint(x: startingPoint.x-x,y: startingPoint.y-y), endingPointValue: CGPoint(x: endingPoint.x-x,y: endingPoint.y-y))
                 tmpLine = line
                 self.view.addSubview(line);
+                line.tag = tmpTime.count
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditVideoController.tapHandler(_:)))
+                //设置手势点击数,双击：点2下
+                tapGesture.numberOfTapsRequired = 2
+                line.addGestureRecognizer(tapGesture)
             }
         }
         //print("(\(location.x),\(location.y))")
         
     }
     func completeMessage() {
+        let seconds = curSeconds
+        tmpTime.append(seconds)
         if(arrowMessage){
             let content = "\(self.color)|\(startingPoint.x),\(startingPoint.y),\(endingPoint.x),\(endingPoint.y)"
-            allMessages![curSeconds] = Message(type:2,second: curSeconds,content: content,scene:scene.sceneName)
+            allMessages![seconds] = Message(type:2,second: curSeconds,content: content,scene:scene.sceneName)
             startingPoint = CGPoint(x: -1,y: -1)
             tmpMessages.append(tmpArrow!)
             self.arrowMessage = false
             self.tmpArrow = nil
         }else if(rectMessage){
             let content = "\(self.color)|\(startingPoint.x),\(startingPoint.y),\(endingPoint.x),\(endingPoint.y)"
-            allMessages![curSeconds] = Message(type:3,second: curSeconds,content: content,scene:scene.sceneName)
+            allMessages![seconds] = Message(type:3,second: curSeconds,content: content,scene:scene.sceneName)
             startingPoint = CGPoint(x: -1,y: -1)
             tmpMessages.append(tmpRect!)
             self.rectMessage = false
@@ -438,14 +478,15 @@ class EditVideoController: UIViewController {
             for p in curvePoints{
                 content = content + "|\(p.x),\(p.y)"
             }
-            allMessages![curSeconds] = Message(type:5,second: curSeconds,content: content,scene:scene.sceneName)
+            curvePoints.removeAll()
+            allMessages![seconds] = Message(type:5,second: curSeconds,content: content,scene:scene.sceneName)
             startingPoint = CGPoint(x: -1,y: -1)
             tmpMessages.append(tmpCurve!)
             self.curveMessage = false
             self.tmpCurve = nil
         }else if(lineMessage){
             let content = "\(self.color)|\(startingPoint.x),\(startingPoint.y),\(endingPoint.x),\(endingPoint.y)"
-            allMessages![curSeconds] = Message(type:4,second: curSeconds,content: content,scene:scene.sceneName)
+            allMessages![seconds] = Message(type:4,second: curSeconds,content: content,scene:scene.sceneName)
             startingPoint = CGPoint(x: -1,y: -1)
             tmpMessages.append(tmpLine!)
             self.lineMessage = false
@@ -463,7 +504,10 @@ class EditVideoController: UIViewController {
             tmp?.removeFromSuperview()
             tmpMessages.removeLast()
         }
-        scene.endTime = curSeconds
+        scene.endTime = self.curSeconds
+        print(self.curSeconds)
+        recorder?.stop()
+        recorder = nil
         
     }
     

@@ -55,12 +55,12 @@ class IndexViewController: UIViewController, UINavigationControllerDelegate, UII
             
             let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL
             var videoName : String = ""
-            let alertController = UIAlertController(title: "视频名称", message: "输入视频的文件名", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title: "Video Name", message: "Please input the video name", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addTextFieldWithConfigurationHandler {
                 (textField: UITextField!) -> Void in
-                textField.placeholder = "文件名"
+                textField.placeholder = "video name"
             }
-            let okAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default) {
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                 (action: UIAlertAction!) -> Void in
                 let tmp = (alertController.textFields?.first)! as UITextField
                 
@@ -81,7 +81,7 @@ class IndexViewController: UIViewController, UINavigationControllerDelegate, UII
                 }
                 self.dismissViewControllerAnimated(true, completion:nil)
             }
-            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel){
+            let cancelAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.Cancel){
                 (action:UIAlertAction!) -> Void in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }

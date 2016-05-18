@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--视频-->
+        <!--Video-->
         <scene sceneID="7ik-k3-I0U">
             <objects>
                 <viewController id="enP-TM-Wa7" customClass="StationsViewController" customModule="SwiftRadio" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,7 +92,7 @@
                             <constraint firstAttribute="trailing" secondItem="dhg-xW-Q3M" secondAttribute="trailing" id="tj2-C3-q2r"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="视频" id="OKR-cw-CyI"/>
+                    <navigationItem key="navigationItem" title="Video" id="OKR-cw-CyI"/>
                     <connections>
                         <outlet property="tableView" destination="dhg-xW-Q3M" id="Aug-Bc-jTR"/>
                         <segue destination="KGt-ro-0DS" kind="push" identifier="editVideo" id="b0Q-dg-qYh"/>
@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="-557" y="301"/>
         </scene>
-        <!--导航-->
+        <!--Navigation-->
         <scene sceneID="F1f-iD-hwS">
             <objects>
                 <viewController id="d51-pN-v4L" customClass="IndexViewController" customModule="SwiftRadio" customModuleProvider="target" sceneMemberID="viewController">
@@ -145,26 +145,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfu-Mp-R6j">
-                                <rect key="frame" x="130" y="177" width="60" height="30"/>
-                                <state key="normal" title="拍摄视频">
+                                <rect key="frame" x="114" y="207" width="92" height="30"/>
+                                <state key="normal" title="Record Video">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="takeVideo:" destination="d51-pN-v4L" eventType="touchUpInside" id="qB3-8W-QfJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UX-Ec-abo">
-                                <rect key="frame" x="130" y="221" width="60" height="30"/>
-                                <state key="normal" title="编辑视频">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="editVideo:" destination="d51-pN-v4L" eventType="touchUpInside" id="pYH-ju-WZY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-qM-Y4Q">
-                                <rect key="frame" x="130" y="265" width="60" height="30"/>
-                                <state key="normal" title="查看视频">
+                                <rect key="frame" x="126" y="269" width="68" height="30"/>
+                                <state key="normal" title="All Videos">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -174,25 +165,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xfu-Mp-R6j" firstAttribute="centerX" secondItem="n0L-0J-Rw2" secondAttribute="centerX" id="42T-mf-WQI"/>
+                            <constraint firstItem="xfu-Mp-R6j" firstAttribute="centerX" secondItem="n0L-0J-Rw2" secondAttribute="centerX" id="1xY-bV-tjC"/>
+                            <constraint firstItem="xfu-Mp-R6j" firstAttribute="top" secondItem="CJT-YJ-3VQ" secondAttribute="bottom" constant="143" id="6kw-HP-fdO"/>
                             <constraint firstItem="n0L-0J-Rw2" firstAttribute="leading" secondItem="PJw-jJ-4WW" secondAttribute="leading" id="BfB-YE-6hk"/>
-                            <constraint firstItem="CoO-qM-Y4Q" firstAttribute="top" secondItem="7UX-Ec-abo" secondAttribute="bottom" constant="14" id="BuO-3D-te4"/>
+                            <constraint firstItem="CoO-qM-Y4Q" firstAttribute="top" secondItem="xfu-Mp-R6j" secondAttribute="bottom" constant="32" id="CI3-cz-y5n"/>
                             <constraint firstItem="n0L-0J-Rw2" firstAttribute="top" secondItem="PJw-jJ-4WW" secondAttribute="topMargin" id="G4M-y1-A8s"/>
-                            <constraint firstItem="7UX-Ec-abo" firstAttribute="leading" secondItem="xfu-Mp-R6j" secondAttribute="leading" id="Gbb-R4-hgc"/>
-                            <constraint firstItem="7UX-Ec-abo" firstAttribute="top" secondItem="xfu-Mp-R6j" secondAttribute="bottom" constant="14" id="Ocw-V3-Lt1"/>
-                            <constraint firstItem="CoO-qM-Y4Q" firstAttribute="centerX" secondItem="7UX-Ec-abo" secondAttribute="centerX" id="Ylo-RB-Ygr"/>
-                            <constraint firstItem="xfu-Mp-R6j" firstAttribute="top" secondItem="CJT-YJ-3VQ" secondAttribute="bottom" constant="113" id="bBz-0d-XwZ"/>
+                            <constraint firstItem="xfu-Mp-R6j" firstAttribute="centerX" secondItem="CoO-qM-Y4Q" secondAttribute="centerX" id="axy-Cs-RSZ"/>
                             <constraint firstItem="HaY-sp-tBy" firstAttribute="top" secondItem="n0L-0J-Rw2" secondAttribute="bottom" id="pZt-8w-knc"/>
                             <constraint firstAttribute="trailing" secondItem="n0L-0J-Rw2" secondAttribute="trailing" id="x2Q-dV-uHL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="导航" id="esz-5A-jq1"/>
+                    <navigationItem key="navigationItem" title="Navigation" id="esz-5A-jq1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjq-7H-oFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-171" y="301"/>
         </scene>
-        <!--编辑-->
+        <!--Edit Video-->
         <scene sceneID="fpd-4c-bAR">
             <objects>
                 <viewController id="KGt-ro-0DS" customClass="EditVideoController" customModule="SwiftRadio" customModuleProvider="target" sceneMemberID="viewController">
@@ -226,7 +215,7 @@
                                             <constraint firstAttribute="width" constant="118" id="Ooe-fQ-6vI"/>
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="完成"/>
+                                        <state key="normal" title="OK"/>
                                         <connections>
                                             <action selector="textFinishPress:" destination="KGt-ro-0DS" eventType="touchUpInside" id="Hge-He-PO7"/>
                                         </connections>
@@ -242,7 +231,7 @@
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqE-G1-8FF">
                                         <rect key="frame" x="40" y="190" width="114" height="30"/>
-                                        <state key="normal" title="取消">
+                                        <state key="normal" title="Cancle">
                                             <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -305,7 +294,7 @@
                             <constraint firstAttribute="trailing" secondItem="yh4-KE-Dup" secondAttribute="trailing" id="z9u-kx-JMz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="编辑" id="uA0-DZ-fuD"/>
+                    <navigationItem key="navigationItem" title="Edit Video" id="uA0-DZ-fuD"/>
                     <connections>
                         <outlet property="colorLabel" destination="kle-ZY-l0S" id="cWU-mv-s3T"/>
                         <outlet property="mainLabel" destination="3pH-Kr-Sz3" id="iHm-gI-pBu"/>
@@ -321,7 +310,7 @@
             </objects>
             <point key="canvasLocation" x="218" y="1039"/>
         </scene>
-        <!--查看-->
+        <!--Display-->
         <scene sceneID="H0i-Ig-5UB">
             <objects>
                 <viewController id="ekN-f3-Olj" customClass="DisplayController" customModule="SwiftRadio" customModuleProvider="target" sceneMemberID="viewController">
@@ -368,7 +357,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ky-yo-1dM" id="yQ5-Vc-SVc">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mh-xv-bX3">
@@ -426,7 +415,7 @@
                             <constraint firstItem="zxL-Xa-LPw" firstAttribute="top" secondItem="iGN-x2-6nd" secondAttribute="top" id="xyg-fE-RN8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="查看" id="tu2-9R-ma0">
+                    <navigationItem key="navigationItem" title="Display" id="tu2-9R-ma0">
                         <barButtonItem key="rightBarButtonItem" image="btn-play" id="9jt-Cf-8nW">
                             <connections>
                                 <action selector="jumpMessage:" destination="ekN-f3-Olj" id="KO6-IV-Gxn"/>

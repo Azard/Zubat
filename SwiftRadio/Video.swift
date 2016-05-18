@@ -59,7 +59,6 @@ class Video:NSObject{
             videos.append(Video(name: content,date: date,image: getPreviewImage(v)))
         }
     
-        print("contents: \(contents)")
         return videos
         
     }
@@ -89,7 +88,10 @@ class Video:NSObject{
     static func deleteVideo(videoName : String){
         do{
             try fileManager.removeItemAtPath(videoDirPath+videoName)
+            
         }catch{}
+        Message.deleteMessages(videoName)
+        Scene.deleteScenes(videoName)
     }
 
 }

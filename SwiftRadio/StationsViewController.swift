@@ -28,7 +28,7 @@ class StationsViewController: UIViewController {
         // Register 'Nothing Found' cell xib
         let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "NothingFound")
-
+        
         loadVideoData()
         // Setup TableView
         tableView.backgroundColor = UIColor.clearColor()

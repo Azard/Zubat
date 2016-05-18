@@ -63,6 +63,26 @@ class Scene{
         
         return allScenes
     }
+    static func deleteScenes(videoName : String){
+        if self.fileManager.fileExistsAtPath(self.sceneDirPath + videoName + ".plist") {
+            let arrays = NSArray(contentsOfFile: self.sceneDirPath + videoName + ".plist") as! [[String]]
+            do{
+                try fileManager.removeItemAtPath(sceneDirPath + videoName + ".plist")
+                
+            }catch{}
+            for a in arrays{
+                let type = Int(a[0])!
+                let sceneName = a[1]
+                if(type == 0){
+                    do{
+                        try fileManager.removeItemAtPath(Message.soundDirPath +  videoName+"_"+sceneName+".acc")
+                        
+                    }catch{}
+                }
+            }
+        }
+        
+    }
 
     
 }
